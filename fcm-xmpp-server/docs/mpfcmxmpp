@@ -1,0 +1,55 @@
+#!/bin/sh
+SERVICE_NAME=mpfcmxmpp
+DIR=/opt/fcm_server
+PATH_TO_JAR=$DIR/target/fcm-xmpp-server-1.0-SNAPSHOT-jar-with-dependencies.jar
+PID_PATH_NAME=/var/run/$SERVICE_NAME.pid
+case $1 in
+    start)
+        echo "Starting $SERVICE_NAME ..."
+        if [ ! -f $PID_PATH_NAME ]; then
+            /usr/bin/nohup /usr/bin/java -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null &
+            #nohup java -jar $PATH_TO_JAR  &
+                        /bin/echo $! > $PID_PATH_NAME
+            /bin/echo "$SERVICE_NAME started ..."
+        else
+            /bin/echo "$SERVICE_NAME is already running ..."
+        fi
+    ;;
+    status)
+        if [ -f $PID_PATH_NAME ]; then
+            /bin/echo "$SERVICE_NAME is running.."
+        else
+            /bin/echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+    stop)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            /bin/echo "$SERVICE_NAME stoping ..."
+            /bin/kill $PID;
+            /bin/echo "$SERVICE_NAME stopped ..."
+            /bin/rm $PID_PATH_NAME
+        else
+            /bin/echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+    restart)
+        if [ -f $PID_PATH_NAME ]; then
+            PID=$(cat $PID_PATH_NAME);
+            /bin/echo "$SERVICE_NAME stopping ...";
+            /bin/kill $PID;
+            /bin/echo "$SERVICE_NAME stopped ...";
+            /bin/rm $PID_PATH_NAME
+            /bin/echo "$SERVICE_NAME starting ..."
+            /usr/bin/nohup /usr/bin/java -jar $PATH_TO_JAR /tmp 2>> /dev/null >> /dev/null &
+            #nohup java -jar $PATH_TO_JAR &
+                        /bin/echo $! > $PID_PATH_NAME
+            /bin/echo "$SERVICE_NAME started ..."
+        else
+            /bin/echo "$SERVICE_NAME is not running ..."
+        fi
+    ;;
+    version)
+         echo "$SERVICE_NAME version"
+         /usr/bin/java -cp $PATH_TO_JAR Tags
+esac

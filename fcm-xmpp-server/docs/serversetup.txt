@@ -1,0 +1,15 @@
+########## rc170206_2 ###############
+	- FCM SmackServer UPDATE
+	- Required JDK1.8 and above
+	- make folder in /opt directory
+	     mkdir fcm_server
+	- copy project jar file in this directory
+	- run the jar file in nohup
+	    nohup java -jar <project.jar> &
+
+
+################## MAKE CHANGE IN PROJECT #################################
+	
+	- ALL CONSTRANT ARE DECLARE IN UTIL FILE
+	- RABBITMQ IS RUNNING ON rabbitmq01.do.sg.mpgps.aspade.in
+	- ALL GOOGLE CREDENTIAL(PROJECT NAME & APIKEY) ARE IN UTIL FILE 

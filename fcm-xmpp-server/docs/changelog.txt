@@ -1,0 +1,60 @@
+################ rc180620 #############################
+- addded support for both type of tracker no.
+- handle int as well as aphanumeric tracker no.
+################ rc180618 #############################
+- send int message(data) to apps.
+################ rc180611 #############################
+- tr_table changes.
+################ rc180527 ############################
+- text serial_number changes
+################ rc180202 ############################
+- DND notification fix.
+- fix for notification of template of Android and IOS.
+################ rc180129 #############################
+- push OpenTSDB data to kafka.
+- more controls via config file.
+################ rc180110 ########################
+- started saving data in openTSDB.
+################ rc171229 ######################
+- added dnd mode file name
+################ rc170908 #####################
+- removed spring-data.
+- added query from new cassnadra tables for performence improvements.
+################ rc170906_2 ###################
+- added producer logger.
+################# rc170906_1 ##################
+- producer fixes.
+################# rc170906 ###################
+- bug fixes.
+################# rc170831 ###################
+- push cassandra save queries to kafka topic 'saveDB'.
+################# rc170717 ##################
+- Added web device notification
+- Bug fix for ios notification
+- added a logger for gcm notification 
+
+################# rc170704 ##################
+- modified to get config from propertities files.
+- added service to start,stop and check version ,status.
+
+################# rc170630 ##################
+- bug fixes.
+- multithread workers.
+- mysql connection pool
+- mysql performence and queries improvements. 
+
+################# rc170428 ##################
+* replaced Rabbitmq with kafka
+* save in database for gcm process
+* fcm saving and fcm alert processing
+* multithreaded kafka consumer
+################# rc170330 ##################
+* added multiple logger with 7 backup files each of 200mb
+* multithread removed cause of some bug
+
+################# rc170328 ##################
+* multithreading with multiple cassandra connections
+* multiple logger
+
+################## rc170206_2 ###############
+	1st Realese 
